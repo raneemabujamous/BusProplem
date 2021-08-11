@@ -1,7 +1,8 @@
 /* global Product, Cart */
 
 'use strict';
-
+let counterDiv;
+let count = 0;
 // Set up an empty cart for use on this page.
 const cart = new Cart([]);
 
@@ -12,7 +13,10 @@ function populateForm() {
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) {
-
+    let opt = document.createElement('option');
+    opt.textContent = Product.allProducts[i].name;
+    opt.value = Product.allProducts[i].name;
+    selectElement.appendChild(opt);
   }
 
 }
@@ -37,10 +41,14 @@ function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
+  let newItem = new CartItem(CartItem.Product, CartItem.quantity);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  counterDiv = document.getElementById('itemCount');
+  counterDiv.textContent = count;
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
