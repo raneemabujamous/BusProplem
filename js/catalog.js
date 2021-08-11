@@ -36,7 +36,7 @@ event.preventDefault();
   CartItem.Product = event.target.items.value;
   CartItem.quantity = event.target.quantity.value;
 
-  count++
+  count++;
   addSelectedItemToCart();
   cart.saveToLocalStorage();
   updateCounter();
@@ -51,9 +51,10 @@ function addSelectedItemToCart() {
   // TODO: using those, add one item to the Cart
 
   let newItem = new CartItem(CartItem.Product, CartItem.quantity);
+  cart.items.push(newItem);
 }
 
-}
+
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
  
