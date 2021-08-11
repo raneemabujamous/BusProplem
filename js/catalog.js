@@ -1,7 +1,7 @@
 /* global Product, Cart */
 
 'use strict';
-
+let count
 // Set up an empty cart for use on this page.
 const cart = new Cart([]);
 
@@ -23,8 +23,12 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
+event.preventDufult();
   // Do all the things ...
+  CartItem.Product = event.target.items.value;
+  CartItem.quantity = event.target.quantity.value;
+
+  count++
   addSelectedItemToCart();
   cart.saveToLocalStorage();
   updateCounter();
