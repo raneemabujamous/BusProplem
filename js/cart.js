@@ -4,7 +4,10 @@
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
+
 let cart;
+let gettbody = document.getElementsByTagName('tbody')[0];
+console.log('sss',gettbody)
 
 function loadCart() {
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -25,23 +28,29 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-    let gettbody = document.getElementsByTagName('tbody')
 
-    for(let i =0 ;i<cart.lenght;i++){
-let createTr = document.createElement('tr')
-gettbody.appendChild(createTr)
-let createTd =  document.createElement('td')
-createTd.textContent= 
-createTr.appendChild(createTd)
-let createTd =  document.createElement('td')
-createTd.textContent= 'quantity'
-createTr.appendChild(createTd)
-let createTd =  document.createElement('td')
-createTd.textContent= 'the item'
-createTr.appendChild(createTd)
+  let gettbody = document.getElementsByTagName('tbody')[0]
 
-    }
-   
+  for(let i =0 ; i<cart.items.length ;i++){
+    let createTr = document.createElement('tr')
+    gettbody.appendChild(createTr)
+    
+    let createTd = document.createElement('td')
+    createTd.textContent ='x'
+    createTr.appendChild(createTd)
+
+    createTd = document.createElement('td')
+    console.log(cart.items)
+
+    createTd.textContent =cart.items[i].quantity 
+    createTr.appendChild(createTd)
+
+     createTd = document.createElement('td')
+    createTd.textContent = cart.items[i].product
+    createTr.appendChild(createTd)
+
+  }
+
   // TODO: Find the table body
 
   // TODO: Iterate over the items in the cart
